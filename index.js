@@ -1,11 +1,17 @@
-const numerosSorteados = [];
+let numerosSorteados = [];
+let limiteNumeroEscolhido = 10;
+let numeroSecreto = gerarNumeroAleatorio();
 
 const mensagemInicial = () => {
     exibirTextoNaTela('resposta', 'Digite um número entre 1 e 5');
 }
 
 const gerarNumeroAleatorio = () => {
-    let numeroEscolhido = Math.floor(Math.random() * 5 + 1);
+    let numeroEscolhido = Math.floor(Math.random() * limiteNumeroEscolhido + 1);
+    let limiteNumerosSorteados = numerosSorteados.length;
+    if (limiteNumerosSorteados == limiteNumeroEscolhido) {
+        numerosSorteados = [];
+    }
     if (numerosSorteados.includes(numeroEscolhido)) {
         return gerarNumeroAleatorio();
     } else {
@@ -15,7 +21,6 @@ const gerarNumeroAleatorio = () => {
     }
 }
 
-let numeroSecreto = gerarNumeroAleatorio();
 
 const exibirTextoNaTela = (tag, texto) => {
     let campo = document.getElementById(tag);
